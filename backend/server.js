@@ -1,24 +1,26 @@
-// server.js
-const express = require('express');
-const dotenv = require('dotenv');
-const scores = require("./data/scores"); // Import the scores data
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+require('dotenv').config()
 
-const app = express();
-dotenv.config();
+const userRoutes = require('./controllers/user')
 
-app.get('/', (req, res) => {
-    res.send("API is running..");
-});
+const app = express()
 
-app.get('/api/scores', (req, res) => {
-    res.json(scores);
-});
+// middlewares
+app.use(express.json())
+app.use(cors())
 
-app.get('/api/scores/:id', (req, res) => { // Use ':id' as the route parameter
-    const score = scores.find((n) => n.id === req.params.id);
-    res.json(score); // Change res.send to res.json to send JSON data
-});
+// routes
+app.use('/user', userRoutes)
 
-const PORT = process.env.PORT || 5000;
+// db connection
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('DB connected'))
+    .catch(err => console.error(err));
 
-app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, console.log(`listening on port ${PORT}`))
+
+module.exports = app
