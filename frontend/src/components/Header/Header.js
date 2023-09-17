@@ -1,18 +1,28 @@
 
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/">GameHub</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to ="/">
+          GameHub
+        </Link>
+        </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">
           </Nav>
           <Nav>
               <>
-                <Nav.Link href="/myscores">My Scores</Nav.Link>
+                <Nav.Link href="/myscores">
+                  <Link to="/myscores">
+                  My Scores
+                  </Link>
+                  </Nav.Link>
                 <NavDropdown >
                   <NavDropdown.Item href="/profile">
                     My Profile
