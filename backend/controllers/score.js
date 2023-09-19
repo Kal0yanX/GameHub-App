@@ -11,9 +11,9 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
+router.get('/:ingame', async (req, res) => {
     try {
-        const scores = await score.find().sort({scoreNum:-1})
+        const scores = await score.find( { 'game': req.params.ingame } ).sort({scoreNum:-1})
         res.status(201).json(scores)
     } catch (error) {
         res.json(error)

@@ -9,6 +9,10 @@ var ScoreSchema = new Schema ({
     user: {
         type: String, 
         required: true
+    },
+    game: {
+        type: String,
+        required: true
     }
 })
 
