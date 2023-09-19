@@ -7,9 +7,11 @@ function Header() {
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>
         <Navbar.Brand>
-          <Link to ="/">
+        <Nav.Link href="/">
+          <Link to="/">
           GameHub
         </Link>
+        </Nav.Link>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
