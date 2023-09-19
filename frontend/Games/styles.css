@@ -1,0 +1,64 @@
+main {
+    height: 100px;
+    width: 100%;
+    background-color: #A0D2EB;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#nav1 {
+    background-color: #A0D2EB;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+#nav2 {
+    margin: 10px;
+}
+
+nav {
+    text-align: center;
+}
+
+nav > * {
+    display: inline-block;
+}
+
+button {
+    height: 60px;
+    width: 100px;
+}
+
+.handContainer {
+    text-align: center;
+}
+
+.hand {
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+}
+
+#hand2 {
+    background-color: aliceblue;
+}
+
+#hand1 {
+    background-color: cadetblue;
+}
+
+.handContainer > .cards > img {
+    width: 50px;
+    margin: 3px;
+}
+body {
+    background-color: #494D5F;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    -webkit-text-stroke: .1px lightslategray;
+}
+
+#btnAll {
+    background-color: #E5EAF5;
+}
