@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const userRoutes = require('./controllers/user')
 const authentication = require('./controllers/authentication')
+const userScore = require('./controllers/score')
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(cors())
 // routes
 app.use('/user', userRoutes)
 app.use('/authentication', authentication)
+app.use('/userscore', userScore)
 
 // db connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

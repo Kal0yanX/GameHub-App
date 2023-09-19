@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const user = require('../models/User')
-const bcrypt = require('bcrypt')
 
 router.post('/', async (req, res) => {
     try {
@@ -16,8 +15,8 @@ router.post('/', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-    const users = await User.findAll()
-    res.json(users)
+    const Users = await user.find()
+    res.json(Users)
 })
 
 module.exports = router
