@@ -4,9 +4,7 @@ const User = require('../models/User')
 const jwt = require('json-web-token')
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     const user = await User.findOne({ name: req.body.name })
-    console.log(user)
     if (!user || !await bcrypt.compare(req.body.password, user.password)) {
         res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
