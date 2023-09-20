@@ -6,9 +6,9 @@ function SignUpForm() {
     const history = useHistory()
 
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
+        // firstName: '',
+        // lastName: '',
+        username: '',
         password: ''
     })
 
@@ -30,7 +30,7 @@ function SignUpForm() {
         <main>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-sm-6 form-group">
                         <label htmlFor="firstName">First Name</label>
                         <input
@@ -53,10 +53,10 @@ function SignUpForm() {
                             name="lastName"
                         />
                     </div>
-                </div>
+                </div> */}
                 <div className="row">
                     <div className="col-sm-6 form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Username</label>
                         <input
                             type="email"
                             required
