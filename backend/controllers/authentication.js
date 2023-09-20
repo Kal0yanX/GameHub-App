@@ -5,7 +5,6 @@ const jwt = require('json-web-token')
 
 router.post('/', async (req, res) => {
     const User = await user.findOne({username: req.body.username})
-    console.log(req.body, User)
     if (!user || !await bcrypt.compare(req.body.password, User.password)) {
         res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
