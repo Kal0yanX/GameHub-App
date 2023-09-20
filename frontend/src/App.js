@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Home'
-
 import Navigation from './Navigation'
 import Error404 from './Error404'
-
 import SignUpForm from './users/SignUpForm'
 import LoginForm from './users/LoginForm'
 import CurrentUserProvider from './contexts/CurrentUser'

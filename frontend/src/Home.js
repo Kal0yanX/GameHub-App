@@ -13,7 +13,7 @@ const HomePage = () => {
                 <a href='/login'>
                     <Button size='lg' className='homebutton'>Login</Button>
                 </a>
-                <a href='/signup'>
+                <a href='/sign-up'>
                     <Button size='lg' className='homebutton' variant='light'>Signup</Button>
                 </a>
             </div>
