@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import MainScreen from '../../components/MainScreen';
+import MainScreen from '../components/MainScreen';
 
 const MyScores = () => {
   return ( <MainScreen title='Welcome back User'> 
