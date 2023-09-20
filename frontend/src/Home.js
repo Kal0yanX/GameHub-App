@@ -9,7 +9,14 @@ const HomePage = () => {
                 <h1 className='title'>Welcome to GameHub</h1>
                 <p className='subtitle'>One stop to a new style of games</p>
             </div>
-
+            <div className='buttonContainer'>
+                <a href='/login'>
+                    <Button size='lg' className='homebutton'>Login</Button>
+                </a>
+                <a href='/sign-up'>
+                    <Button size='lg' className='homebutton' variant='light'>Signup</Button>
+                </a>
+            </div>
 
         </Row>
 

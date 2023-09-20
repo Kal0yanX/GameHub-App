@@ -9,7 +9,7 @@ function LoginForm() {
     const { setCurrentUser } = useContext(CurrentUser)
 
     const [credentials, setCredentials] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
@@ -18,19 +18,21 @@ function LoginForm() {
   
   
     async function handleSubmit(e) {
-        const response = await fetch(`http://localhost:5000/authentication/`, {
+        e.preventDefault()
+        const URL = `${process.env.REACT_APP_BACKEND_URI}/authentication/`
+        const response = await fetch(URL , {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(credentials)
         })
-    
+
         const data = await response.json()
-    
+
         if (response.status === 200) {
             setCurrentUser(data.user)
+            localStorage.setItem('token', data.token)
             history.push(`/`)
         } else {
             setErrorMessage(data.message)
@@ -51,15 +53,15 @@ function LoginForm() {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-sm-6 form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="username">Username</label>
                         <input
-                            type="email"
+                            type="username"
                             required
-                            value={credentials.email}
-                            onChange={e => setCredentials({ ...credentials, email: e.target.value })}
+                            value={credentials.username}
+                            onChange={e => setCredentials({ ...credentials, username: e.target.value })}
                             className="form-control"
-                            id="email"
-                            name="email"
+                            id="username"
+                            name="username"
                         />
                     </div>
                     <div className="col-sm-6 form-group">
@@ -75,7 +77,7 @@ function LoginForm() {
                         />
                     </div>
                 </div>
-                <input className="btn btn-primary" type="submit" value="Login" />
+                <input className="btn btn-primary" type="submit" value="Log in" />
             </form>
         </main>
     )
