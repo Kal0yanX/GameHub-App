@@ -19,7 +19,8 @@ function LoginForm() {
   
     async function handleSubmit(e) {
         e.preventDefault()
-        const response = await fetch(`http://localhost:5000/authentication/`, {
+        const URL = `${process.env.REACT_APP_BACKEND_URI}/authentication/`
+        const response = await fetch(URL , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

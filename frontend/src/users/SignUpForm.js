@@ -26,7 +26,7 @@ function SignUpForm() {
         const data = await response.json();
         if (response.status === 201) {
             setCurrentUser(data.user)
-            
+            history.push(`/`)
         } else {
             setErrorMessage(data.message)
         }
