@@ -52,13 +52,8 @@ if (currentUser?.role === 'admin') {
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => history.push("/places")}>
-                        Places
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={() => history.push("/places/new")}>
-                        Add Place
+                    <a href="#" onClick={() => history.push("/games")}>
+                        Games
                     </a>
                 </li>
                 {loginActions}

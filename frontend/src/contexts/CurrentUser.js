@@ -10,6 +10,7 @@ function CurrentUserProvider({ children }) {
     useEffect(() => {
 
         const getLoggedInUser = async () => {
+
             let response = await fetch(`${process.env.BACKEND_URI}/authentication/`, {
                 credentials: 'include'
             })
