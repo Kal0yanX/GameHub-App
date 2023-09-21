@@ -1,30 +1,22 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-require('dotenv').config()
+import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+import cookieParser from 'cookie-parser';
+import connectDB from './config/db.js';
+const port = process.env.PORT || 5000;
+import userRoutes from './routes/userRoutes.js';
 
-const userRoutes = require('./controllers/user')
-const authentication = require('./controllers/authentication')
-const userScores = require('./controllers/score')
+connectDB();
 
-const app = express()
+const app = express();
 
-// middlewares
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// routes
-app.use('/user', userRoutes)
-app.use('/authentication', authentication)
-app.use('/score', userScores)
+app.use(cookieParser());
 
-// db connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('DB connected'))
-    .catch(err => console.error(err));
+app.use('/api/users', userRoutes);
 
-const PORT = process.env.PORT || 5000
+app.get('/', (req, res) => res.send('Server is ready'));
 
-app.listen(PORT, console.log(`listening on port ${PORT}`))
-
-module.exports = app
+app.listen(port, () => console.log(`Server started on port ${port}`));
