@@ -15,10 +15,7 @@ const Hero = () => {
             <Button variant='primary' href='/login' className='me-3'>Sign In</Button>
             </LinkContainer>
             <LinkContainer to='/register'>
-            <Button variant='secondary' href='/register'  className='me-3'>Sign Up</Button>
-            </LinkContainer>
-            <LinkContainer to='/games'>
-            <Button variant='secondary' href='/games'>Games</Button>
+            <Button variant='secondary' href='/register'>Sign Up</Button>
             </LinkContainer>
           </div>
         </Card>
