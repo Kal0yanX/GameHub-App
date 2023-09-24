@@ -11,7 +11,7 @@ const GamePage = () => {
           Pick and choose whichever game you like to play!
           </p>
           <div className='d-flex'>
-            <LinkContainer to='/ponggame'>
+            <LinkContainer to='/games/ponggame'>
             <Button variant='success' href='/ponggame'>Pong Game</Button>
             </LinkContainer>
           </div>
