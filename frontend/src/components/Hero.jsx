@@ -18,6 +18,9 @@ const Hero = () => {
             <LinkContainer to='/register'>
             <Button variant='secondary' href='/register'>Sign Up</Button>
             </LinkContainer>
+            <LinkContainer to='/games'>
+              <Button variant='success' href='/games'>Games</Button>
+            </LinkContainer>
           </div>
         </Card>
       </Container>

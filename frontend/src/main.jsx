@@ -12,11 +12,15 @@ import LoginScreen from './screens/LoginScreen.jsx';
 import RegisterScreen from './screens/RegisterScreen.jsx';
 import ProfileScreen from './screens/ProfileScreen.jsx';
 import GamblingGame from './components/CardGame.jsx';
+import Pong from './components/Pong.jsx'
+import GamePage from './screens/GamePage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route path='/games/gamblingGame' element={<GamblingGame />}/>
+      <Route path='/games/ponggame' element={<Pong />} />
+      <Route path='/games' element={<GamePage />} />
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
