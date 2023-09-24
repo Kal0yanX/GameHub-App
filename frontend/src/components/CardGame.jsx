@@ -72,7 +72,6 @@ const gamblingGame = () => {
         while (hand1.length < 3) {
             tmp.push(dealer.deck.splice(Math.floor(Math.random() * dealer.deck.length - 1), 1)[0]);
             let card = tmp.pop()
-            console.log(card)
             setHand1(hand1.push(card))
         };
     
