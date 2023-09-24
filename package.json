@@ -8,11 +8,7 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm run dev --prefix frontend",
-<<<<<<< HEAD
     "dev": "concurrently \"npm run server\" \"npm run client\""
-=======
-    "dev": "npx concurrently \"npm run server\" \"npm run client\""
->>>>>>> c923931a6b90ff8dd5eab6cf478e10c412aa2d4e
   },
   "author": "",
   "license": "ISC",
