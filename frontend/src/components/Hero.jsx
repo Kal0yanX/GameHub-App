@@ -1,6 +1,7 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+
 const Hero = () => {
   return (
     <div className=' py-5'>
@@ -8,7 +9,7 @@ const Hero = () => {
         <Card className='p-5 d-flex flex-column align-items-center hero-card bg-light w-75'>
           <h1 className='text-center mb-4'>GameHub</h1>
           <p className='text-center mb-4'>
-          One stop to a new style of games.  Get logged in to start!
+            One stop to a new style of games.  Get logged in to start!
           </p>
           <div className='d-flex'>
             <LinkContainer to='/login'>
