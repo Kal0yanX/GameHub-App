@@ -1,24 +1,23 @@
-const mongoose = require('mongoose'),
-    Schema = mongoose.Schema
+import mongoose from 'mongoose';
 
-var ScoreSchema = new Schema (
-    {
-        scoreNum: {
-            type: Number, 
-            required: true
-        },
-        user: {
-            type: String, 
-            required: true
-        },
-        game: {
-            type: String,
-            required: true
-        }
+const scoreSchema = mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
     },
-    {
-        timestamps: true,
-    }
-)
+    game: {
+      type: String,
+      required: true,
+    },
+    score: {
+      type: Number,
+      required: true,
+    },
+  },
+);
 
-module.exports = mongoose.model('Scores', ScoreSchema)
+const Score = mongoose.model('Score', scoreSchema);
+
+export default Score;

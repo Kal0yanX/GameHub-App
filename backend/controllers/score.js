@@ -1,23 +1,40 @@
-const router = require('express').Router()
-const score = require('../models/Score')
+import asyncHandler from 'express-async-handler';
+import Score from '../models/Score.js';
+import User from '../models/User.js';
 
-router.post('/', async (req, res) => {
-    try {
-        await new score(req.body).save()
-        res.status(201).json({ 'message': 'score posted' })
-    } catch (error) {
-        console.log('error posting score:', error)
-        res.json({ 'message': 'error posting score' })
-    }
-})
+// description: Create a new score
+// route: POST /api/scores
+// @access: Private
+const createScore = asyncHandler(async (req, res) => {
+  const { score, game } = req.body;
+  const username = req.user.name; 
 
-router.get('/:ingame', async (req, res) => {
-    try {
-        const scores = await score.find( { 'game': req.params.ingame } ).sort({scoreNum:-1})
-        res.status(201).json(scores)
-    } catch (error) {
-        res.json(error)
-    }
-})
+  const user = await User.findOne({ name: username });
 
-module.exports = router
+  if (!user) {
+    res.status(400);
+    throw new Error('User not found');
+  }
+
+  const newScore = new Score({
+    user: user._id,
+    score,
+    game,
+  });
+
+  const savedScore = await newScore.save();
+
+  res.status(201).json(savedScore);
+});
+
+// description: Get all scores
+// route: GET /api/scores
+// @access: Public
+const getAllScores = asyncHandler(async (req, res) => {
+    console.log('user id is ' + req.params.userId)
+  const scores = await Score.find({User: req.params.userId });
+
+  res.status(200).json(scores);
+});
+
+export { createScore, getAllScores };

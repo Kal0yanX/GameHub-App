@@ -1,29 +1,44 @@
 import { useState, useEffect } from 'react';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import Loader from '../components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
 import { useUpdateUserMutation } from '../slices/usersApiSlice';
+import { useGetMutation } from '../slices/scoresApiSlice';
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [scores, setScores] = useState('');
 
   const dispatch = useDispatch();
 
-
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [updateProfile, { isLoading }] = useUpdateUserMutation()
+  const [updateProfile, { isLoading }] = useUpdateUserMutation();
+  const [getScores, { isLoadingScores }] = useGetMutation();
 
   useEffect(() => {
     setName(userInfo.name);
     setEmail(userInfo.email);
-  }, [userInfo.email, userInfo.name]);
+
+    const fetchScores = async () => {
+      try {
+        const _scores = await getScores(userInfo._id).unwrap();
+        console.log(_scores);
+        setScores(_scores);
+      } catch (error) {
+        console.error('Error fetching scores:', error.message);
+      }
+    };
+
+    fetchScores();
+  }, [userInfo._id, userInfo.name, userInfo.email, getScores]);
+  
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -47,6 +62,7 @@ const ProfileScreen = () => {
     }
   };
   return (
+    <div>
     <FormContainer>
       <h1>Update Profile</h1>
       <Form onSubmit={submitHandler}>
@@ -96,10 +112,28 @@ const ProfileScreen = () => {
           Update
         </Button>
 
-      </Form>
+        </Form>
+      </FormContainer>
 
-
-    </FormContainer>
+      <FormContainer>
+        <div className="mt-4">
+          <h2>Your Scores</h2>
+          {isLoadingScores ? (
+            <Loader />
+          ) : (
+            <div>
+              {Array.isArray(scores) && scores.length > 0 ? (
+                scores.map((score, index) => (
+                  <div key={index}>{score}</div>
+                ))
+              ) : (
+                <p>No scores available.</p>
+              )}
+            </div>
+          )}
+        </div>
+      </FormContainer>
+    </div>
   );
 };
 
