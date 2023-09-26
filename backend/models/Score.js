@@ -11,7 +11,7 @@ const scoreSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    score: {
+    scores: {
       type: Number,
       required: true,
     },

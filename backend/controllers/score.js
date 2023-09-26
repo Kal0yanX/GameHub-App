@@ -6,7 +6,7 @@ import User from '../models/User.js';
 // route: POST /api/scores
 // @access: Private
 const createScore = asyncHandler(async (req, res) => {
-  const { score, game } = req.body;
+  const { scores, game } = req.body;
   const username = req.user.name; 
 
   const user = await User.findOne({ name: username });
@@ -18,7 +18,7 @@ const createScore = asyncHandler(async (req, res) => {
 
   const newScore = new Score({
     user: user._id,
-    score,
+    scores,
     game,
   });
 

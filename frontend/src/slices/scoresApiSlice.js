@@ -1,5 +1,4 @@
 import { apiSlice } from "./apiSlice";
-
 const URL = '/api/scores';
 
 export const scoresApiSlice = apiSlice.injectEndpoints({
@@ -15,7 +14,7 @@ export const scoresApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${URL}`,
         params: {
-          userId: data, // Use an object for params
+          userId: data,
         },
         method: 'GET',
       }),

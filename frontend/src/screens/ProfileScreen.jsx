@@ -13,7 +13,7 @@ const ProfileScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [scores, setScores] = useState('');
+  const [scores, setScores] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -23,21 +23,27 @@ const ProfileScreen = () => {
   const [getScores, { isLoadingScores }] = useGetMutation();
 
   useEffect(() => {
-    setName(userInfo.name);
-    setEmail(userInfo.email);
-
     const fetchScores = async () => {
       try {
         const _scores = await getScores(userInfo._id).unwrap();
         console.log(_scores);
-        setScores(_scores);
+        
+        setScores(_scores); 
       } catch (error) {
         console.error('Error fetching scores:', error.message);
+        console.log('userInfo:', userInfo);
+        console.log('User ID:', userInfo._id);
+
       }
     };
-
+  
     fetchScores();
+  
+    // Set name and email based on userInfo
+    setName(userInfo.name);
+    setEmail(userInfo.email);
   }, [userInfo._id, userInfo.name, userInfo.email, getScores]);
+  
   
 
   const submitHandler = async (e) => {
@@ -116,22 +122,22 @@ const ProfileScreen = () => {
       </FormContainer>
 
       <FormContainer>
-        <div className="mt-4">
-          <h2>Your Scores</h2>
-          {isLoadingScores ? (
-            <Loader />
-          ) : (
-            <div>
-              {Array.isArray(scores) && scores.length > 0 ? (
-                scores.map((score, index) => (
-                  <div key={index}>{score}</div>
-                ))
-              ) : (
-                <p>No scores available.</p>
-              )}
-            </div>
-          )}
-        </div>
+      <div className="mt-4">
+  <h2>Your Scores</h2>
+  {isLoadingScores ? (
+    <Loader />
+  ) : (
+    <div>
+      {Array.isArray(scores) && scores.length > 0 ? (
+        scores.map((scores, index) => (
+          <div key={index}>{scores}</div>
+        ))
+      ) : (
+        <p>No scores available.</p>
+      )}
+    </div>
+  )}
+</div>
       </FormContainer>
     </div>
   );
