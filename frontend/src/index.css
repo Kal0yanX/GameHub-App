@@ -1,0 +1,15 @@
+body {
+    background-image: url("background.jpg");
+    background-size: 108%; /* Adjust the percentage to make it smaller or larger */
+  }
+  body::after {
+    content: "Photo by Yan Krukau: https://www.pexels.com/photo/lighted-screen-monitors-inside-a-gaming-computer-shop-9072208/";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    font-size: 12px;
+    z-index: 999;
+  }
+  
