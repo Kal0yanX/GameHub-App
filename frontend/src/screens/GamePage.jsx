@@ -12,10 +12,10 @@ const GamePage = () => {
           </p>
           <div className='d-flex'>
             <LinkContainer to='/games/gamblingGame'>
-              <Button variant='success' href='/gamblingGame'>Card Game</Button>
+              <Button variant='success' href='/gamblingGame' className='me-3'>Card Game</Button>
             </LinkContainer>
             <LinkContainer to='/games/ponggame'>
-              <Button variant='success' href='/ponggame'>Pong Game</Button>
+              <Button variant='success' href='/ponggame' className='me-3'>Pong Game</Button>
             </LinkContainer>
           </div>
         </Card>

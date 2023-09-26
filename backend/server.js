@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/frontend/dist')));
   
@@ -30,7 +30,5 @@ if (process.env.NODE_ENV === 'production') {
       res.send('API is running....');
     });
   }
-
-
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
