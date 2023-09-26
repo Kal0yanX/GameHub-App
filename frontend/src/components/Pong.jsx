@@ -228,7 +228,7 @@ function draw() {
 
 // export default draw;
   return (
-    <div>
+    <div style={{ color: 'white' }}>
         <h1>Game Controls</h1>
         <p>Player 1: W (up) S (down)</p>
         <p>Player 2: Arrow Up (up) Arrow Down (down)</p>

@@ -24,7 +24,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
       try {
-        getScores(userInfo._id).then((res) => {setScores(res)
+        getScores(userInfo._id).then((res) => {setScores(res.data)
         console.log(res)
         })
 
@@ -116,27 +116,27 @@ const ProfileScreen = () => {
       </FormContainer>
 
       <FormContainer>
-      <div className="mt-4">
-  <h2>Your Scores</h2>
-  {isLoadingScores ? (
-  <Loader />
-) : (
-  <div>
-    {Array.isArray(scores) && scores.length > 0 ? (
-      scores.map((score, index) => (
-        <div key={index}>
-          {/* Access the 'scores' property of each score object */}
-          <p>Scores: {score.scores}</p>
-          <p>Game: {score.game}</p>
-        </div>
-      ))
+  <div className="mt-4">
+    <h2>Your Scores</h2>
+    {isLoadingScores ? (
+      <Loader />
     ) : (
-      <p>No scores available.</p>
+      <div>
+        {Array.isArray(scores) && scores.length > 0 ? (
+          scores.map((score, index) => (
+            <div key={index}>
+              <p>Game: {score.game}</p>
+              <p>Scores: {score.scores}</p>
+            </div>
+          ))
+        ) : (
+          <p>No scores available.</p>
+        )}
+      </div>
     )}
   </div>
-)}
-</div>
-      </FormContainer>
+</FormContainer>
+
     </div>
   );
 };
