@@ -1,7 +1,6 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-
 const Hero = () => {
   return (
     <div className=' py-5'>
@@ -16,10 +15,10 @@ const Hero = () => {
             <Button variant='primary' href='/login' className='me-3'>Sign In</Button>
             </LinkContainer>
             <LinkContainer to='/register'>
-            <Button variant='secondary' href='/register'>Sign Up</Button>
+            <Button variant='secondary' href='/register' className='me-3'>Sign Up</Button>
             </LinkContainer>
             <LinkContainer to='/games'>
-              <Button variant='success' href='/games'>Games</Button>
+              <Button variant='success' href='/games' className='me-3'>Games</Button>
             </LinkContainer>
           </div>
         </Card>

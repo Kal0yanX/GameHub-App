@@ -31,6 +31,4 @@ if (process.env.NODE_ENV === 'development') {
     });
   }
 
-
-
 app.listen(port, () => console.log(`Server started on port ${port}`));

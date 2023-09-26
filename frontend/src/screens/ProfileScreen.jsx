@@ -28,8 +28,6 @@ const ProfileScreen = () => {
         console.log(res)
         })
 
-        
- 
       } catch (error) {
         console.error('Error fetching scores:', error.message);
         console.log('userInfo:', userInfo);
@@ -42,8 +40,6 @@ const ProfileScreen = () => {
     setEmail(userInfo.email);
   }, [userInfo._id, userInfo.name, userInfo.email, getScores]);
   
-  
-
   const submitHandler = async (e) => {
     e.preventDefault();
 
