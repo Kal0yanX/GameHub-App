@@ -127,7 +127,7 @@ const gamblingGame = () => {
     return(
         <div>
             <button onClick={deal}>Deal cards</button>
-            <h2>{score}</h2>
+            <h2 style={{ color: 'white' }}>{score}</h2>
             <div id="visible cards">
                 <button id="first button">
                     <img id="first card" alt="first card" width='150px'/>

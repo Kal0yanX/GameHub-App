@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-const URL = '/api/scores';
+const URL = '/api/users';
 
 export const scoresApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -12,7 +12,7 @@ export const scoresApiSlice = apiSlice.injectEndpoints({
     }),
     get: builder.mutation({
       query: (data) => ({
-        url: `${URL}`,
+        url: `${URL}/scores`,
         params: {
           userId: data,
         },
