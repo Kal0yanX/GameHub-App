@@ -125,7 +125,13 @@ const gamblingGame = () => {
     //"cash out" end game to track score.
 
     return(
-        <div>
+        <div style={{ color: 'white' }}>
+    <p>If the two cards shared any attribute, you would win a prize based off of that:</p>
+    <p>same color, you would win 1 point</p>
+    <p>same suit, you would win 5 points</p>
+    <p>same number, you would win 10 points</p>
+    <p>same number and color, you would win 20 points</p>
+    <p>if you reroll you lose 2 points</p>
             <button onClick={deal}>Deal cards</button>
             <h2 style={{ color: 'white' }}>{score}</h2>
             <div id="visible cards">
