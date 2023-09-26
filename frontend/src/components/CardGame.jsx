@@ -1,7 +1,9 @@
 import { useState } from "react";
-
+import { useSaveMutation, useGetMutation } from "../slices/scoresApiSlice";
 
 const gamblingGame = () => {
+  const [saveScore] = useSaveMutation();
+  const [getScores] = useGetMutation();
     class Card {
         constructor(suit, values) {
             this.suit = suit;
@@ -44,13 +46,10 @@ const gamblingGame = () => {
             let currentIndex = this.deck.length,
               randomIndex;
     
-            // While there remain elements to shuffle.
             while (currentIndex != 0) {
-              // Pick a remaining element.
               randomIndex = Math.floor(Math.random() * currentIndex);
               currentIndex--;
     
-              // And swap it with the current element.
               [this.deck[currentIndex], this.deck[randomIndex]] = [
                 this.deck[randomIndex],
                 this.deck[currentIndex],
@@ -65,6 +64,19 @@ const gamblingGame = () => {
     const [hand1, setHand1] = useState([]);
     const [hand2, setHand2] = useState([]);
     const tmp = [];
+  const handleSubmitScore = async () => {
+    try {
+      const response = await saveScore({
+        userId: 'replace-with-user-id', 
+        game: 'cardgame', 
+        scores: score,
+      });
+
+      console.log('Score submitted successfully', response);
+    } catch (error) {
+      console.error('Error submitting score', error);
+    }
+  };
     
     function deal() {
         setScore(score-2)
@@ -120,28 +132,31 @@ const gamblingGame = () => {
         
     }
     
-    //need to make game where user starts with $10, each new hand/gamble costs $2 dollars.
 
-    //"cash out" end game to track score.
-
-    return(
-        <div>
-            <button onClick={deal}>Deal cards</button>
-            <h2 style={{ color: 'white' }}>{score}</h2>
-            <div id="visible cards">
-                <button id="first button">
-                    <img id="first card" alt="first card" width='150px'/>
-                </button>
-                <button id="second button">
-                    <img id="second card" alt="second card" width='150px'/>
-                </button>
-                <button id="third button">
-                    <img id="third card" alt="third card" width='150px'/>
-                </button>
-            </div>
-            <button id="submit score">Submit score</button>
+    return (
+        <div style={{ color: 'white' }}>
+          <p>If the two cards shared any attribute, you would win a prize based off of that:</p>
+          <p>same color, you would win 1 point</p>
+          <p>same suit, you would win 5 points</p>
+          <p>same number, you would win 10 points</p>
+          <p>same number and color, you would win 20 points</p>
+          <p>if you reroll you lose 2 points</p>
+          <button onClick={deal}>Deal cards</button>
+          <h2 style={{ color: 'white' }}>{score}</h2>
+          <div id="visible cards">
+            <button id="first button">
+              <img id="first card" alt="first card" width='150px'/>
+            </button>
+            <button id="second button">
+              <img id="second card" alt="second card" width='150px'/>
+            </button>
+            <button id="third button">
+              <img id="third card" alt="third card" width='150px'/>
+            </button>
+          </div>
+          <button id="submit score" onClick={handleSubmitScore}>Submit score</button>
         </div>
-    )
+      );
 }
 
 export default gamblingGame
