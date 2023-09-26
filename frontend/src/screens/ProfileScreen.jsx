@@ -23,21 +23,19 @@ const ProfileScreen = () => {
   const [getScores, { isLoadingScores }] = useGetMutation();
 
   useEffect(() => {
-    const fetchScores = async () => {
       try {
-        const _scores = await getScores(userInfo._id).unwrap();
-        console.log(_scores);
+        getScores(userInfo._id).then((res) => {setScores(res)
+        console.log(res)
+        })
+
         
-        setScores(_scores); 
+ 
       } catch (error) {
         console.error('Error fetching scores:', error.message);
         console.log('userInfo:', userInfo);
         console.log('User ID:', userInfo._id);
 
       }
-    };
-  
-    fetchScores();
   
     // Set name and email based on userInfo
     setName(userInfo.name);
@@ -125,18 +123,22 @@ const ProfileScreen = () => {
       <div className="mt-4">
   <h2>Your Scores</h2>
   {isLoadingScores ? (
-    <Loader />
-  ) : (
-    <div>
-      {Array.isArray(scores) && scores.length > 0 ? (
-        scores.map((scores, index) => (
-          <div key={index}>{scores}</div>
-        ))
-      ) : (
-        <p>No scores available.</p>
-      )}
-    </div>
-  )}
+  <Loader />
+) : (
+  <div>
+    {Array.isArray(scores) && scores.length > 0 ? (
+      scores.map((score, index) => (
+        <div key={index}>
+          {/* Access the 'scores' property of each score object */}
+          <p>Scores: {score.scores}</p>
+          <p>Game: {score.game}</p>
+        </div>
+      ))
+    ) : (
+      <p>No scores available.</p>
+    )}
+  </div>
+)}
 </div>
       </FormContainer>
     </div>

@@ -33,6 +33,7 @@ const createScore = asyncHandler(async (req, res) => {
 const getAllScores = asyncHandler(async (req, res) => {
     console.log('user id is ' + req.params.userId)
   const scores = await Score.find({User: req.params.userId });
+  console.log(scores)
 
   res.status(200).json(scores);
 });
