@@ -96,7 +96,9 @@ To run the application locally, follow these steps:
 
 ## Known Issues
 
-- There are no known issues at the moment.
+- Deployment was having issues connecting backend, however frontend and backend were able to deploy, data was not integrated: 
+-frontend: https://game-hub-app-lake.vercel.app/
+-backend: https://game-hub-app-monorepo.vercel.app/
 
 ## Contributors
 
