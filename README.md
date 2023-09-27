@@ -8,6 +8,7 @@
 - [Usage](#usage)
 - [Known Issues](#known-issues)
 - [Contributors](#contributors)
+- [Credits](#credits)
 - [License](#license)
 
 ## Project Overview
@@ -103,6 +104,16 @@ To run the application locally, follow these steps:
 - Matthew Wolfe
 - Thomas Guerrero
 - William Brewster
+
+## Credits
+
+This project was developed with the assistance of the following tutorial:
+
+- [MERN Crash Course | JWT Authentication, Redux Toolkit, Deployment & More](<URL>)
+  - **Author:** [Brad Traversy]
+  - **YouTube Channel:** [https://www.youtube.com/@TraversyMedia]
+  - **Link to Video:** [https://www.youtube.com/@TraversyMedia]
+
 
 ## License
 
